@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs3asnuute3"]
+
+[ext_resource type="Script" uid="uid://d0fi3mxvjlmts" path="res://bullet.gd" id="1_v7oki"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rtl8c"]
+radius = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7oki"]
+albedo_color = Color(0.14053941, 0.49116838, 0.036155533, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_v8qja"]
+material = SubResource("StandardMaterial3D_v7oki")
+radius = 0.15
+height = 0.3
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = ExtResource("1_v7oki")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_rtl8c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_v8qja")

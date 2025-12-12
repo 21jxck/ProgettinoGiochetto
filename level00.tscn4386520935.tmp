@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dlq3gu1roic5b"]
+[gd_scene load_steps=22 format=3 uid="uid://dlq3gu1roic5b"]
 
 [ext_resource type="Script" uid="uid://4bkg8l7plxrq" path="res://player.gd" id="1_3ujkp"]
 [ext_resource type="Script" uid="uid://b4k5h2s85tou5" path="res://level_00.gd" id="1_wyok8"]
@@ -19,17 +19,12 @@ size = Vector3(20, 2, 0.02)
 [sub_resource type="BoxShape3D" id="BoxShape3D_72a80"]
 size = Vector3(20, 2, 0.02)
 
-[sub_resource type="Environment" id="Environment_72a80"]
-fog_enabled = true
-fog_light_color = Color(0.9708784, 0.7631349, 0.64529926, 1)
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3ujkp"]
 radius = 0.25
 height = 1.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wyok8"]
 albedo_color = Color(0.50279605, 0.589581, 0.90585226, 1)
-emission = Color(0.3620942, 0.3398672, 0.46168947, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3ujkp"]
 material = SubResource("StandardMaterial3D_wyok8")
@@ -89,12 +84,11 @@ transform = Transform3D(-4.371138e-08, 0, 0.9999998, 0, 1, 0, -0.9999998, 0, -4.
 shape = SubResource("BoxShape3D_3ujkp")
 
 [node name="CSWallRight" type="CollisionShape3D" parent="Level"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5, 1, 7.5)
+transform = Transform3D(-4.3710532e-08, 0, 0.99998564, 0, 1, 0, -0.99998564, 0, -4.3710532e-08, -2.5, 1, 7.5)
 shape = SubResource("BoxShape3D_72a80")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, -1.6550334e-13, -8.7422826e-08, -5.3632753e-08, 0.7897061, 0.6134854, 6.903823e-08, 0.6134854, -0.7897061, -0.01416849, 2.1878688, -3.1456013)
-environment = SubResource("Environment_72a80")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.46971795, 0.88281655, 0, -0.88281655, -0.46971795, 0, 3.338303, -1.6759673)
