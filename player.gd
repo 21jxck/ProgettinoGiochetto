@@ -32,8 +32,8 @@ func _process(delta: float) -> void:
 		elapsed = 0
 		var bi : Bullet = bulletScene.instantiate()
 		get_parent_node_3d().add_child(bi)
-		bi.position.z = self.position.z + 0.75
-		bi.position.x = self.position.x
+		bi.position.z = self.position.z
+		bi.position.x = self.position.x - 0.5
 		bi.position.y = 0.9
 		bi.gravity_scale = 0	# gravita assente
 		
@@ -41,8 +41,8 @@ func _process(delta: float) -> void:
 		elapsed = 0
 		var bi : Bullet = bulletScene.instantiate()
 		get_parent_node_3d().add_child(bi)
-		bi.position.z = self.position.z + 0.75
-		bi.position.x = self.position.x
+		bi.position.z = self.position.z
+		bi.position.x = self.position.x - 0.5
 		bi.position.y = 0.9	
 		bi.gravity_scale = 1	# gravita presente
 	pass
