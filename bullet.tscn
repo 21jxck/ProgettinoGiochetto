@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs3asnuute3"]
+[gd_scene load_steps=17 format=3 uid="uid://cs3asnuute3"]
 
 [ext_resource type="Script" uid="uid://d0fi3mxvjlmts" path="res://bullet.gd" id="1_v7oki"]
 [ext_resource type="PackedScene" uid="uid://gf8h2l378mxc" path="res://asset/Skeleton_Arrow.gltf" id="2_v8qja"]
+[ext_resource type="PackedScene" uid="uid://b5bjwggoxwjxb" path="res://arrow_sparks.tscn" id="3_t4vbm"]
+[ext_resource type="Texture2D" uid="uid://b4car73fyq4ys" path="res://circle_05.png" id="4_2b2rl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t4vbm"]
 radius = 0.03
@@ -15,6 +17,57 @@ material = SubResource("StandardMaterial3D_v7oki")
 radius = 0.15
 height = 0.3
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4vbm"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("4_2b2rl")
+albedo_texture_msdf = true
+
+[sub_resource type="Curve" id="Curve_2b2rl"]
+_data = [Vector2(0, 0), 0.0, 2.7675939, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b7duk"]
+curve = SubResource("Curve_2b2rl")
+
+[sub_resource type="Gradient" id="Gradient_t2bd8"]
+offsets = PackedFloat32Array(0.25974026, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h0pa3"]
+gradient = SubResource("Gradient_t2bd8")
+
+[sub_resource type="Curve" id="Curve_6ol1o"]
+_data = [Vector2(0, 0), 0.0, 3.4500997, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gofb6"]
+curve = SubResource("Curve_6ol1o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2b2rl"]
+particle_flag_align_y = true
+direction = Vector3(0, 0, -1)
+spread = 0.0
+initial_velocity_min = 0.5
+initial_velocity_max = 2.0
+radial_velocity_min = 0.19997764
+radial_velocity_max = 0.99997765
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.79999995
+color = Color(0.3415086, 0.7226042, 0.16363716, 1)
+color_ramp = SubResource("GradientTexture1D_h0pa3")
+alpha_curve = SubResource("CurveTexture_b7duk")
+emission_curve = SubResource("CurveTexture_gofb6")
+hue_variation_min = -0.54
+hue_variation_max = 0.46999997
+
+[sub_resource type="QuadMesh" id="QuadMesh_b7duk"]
+size = Vector2(0.1, 0.3)
+
 [node name="RigidBody3D" type="RigidBody3D"]
 mass = 0.2
 script = ExtResource("1_v7oki")
@@ -27,5 +80,14 @@ shape = SubResource("CapsuleShape3D_t4vbm")
 visible = false
 mesh = SubResource("SphereMesh_v8qja")
 
+[node name="ArrowSparks" parent="." instance=ExtResource("3_t4vbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.36)
+material_override = SubResource("StandardMaterial3D_t4vbm")
+cast_shadow = 0
+lifetime = 0.6
+explosiveness = 0.1
+process_material = SubResource("ParticleProcessMaterial_2b2rl")
+draw_pass_1 = SubResource("QuadMesh_b7duk")
+
 [node name="Skeleton_Arrow2" parent="." instance=ExtResource("2_v8qja")]
-transform = Transform3D(1.9106853e-15, -4.3711385e-08, 0.99999994, -0.9999999, -4.3711385e-08, 0, 4.3711385e-08, -0.99999994, -4.3711385e-08, 0, 0, 0)
+transform = Transform3D(-0.99999994, -8.742276e-08, 3.8213705e-15, 0, -4.371138e-08, -0.9999999, 8.742277e-08, -0.9999998, 4.3711385e-08, 0, 0, 0)

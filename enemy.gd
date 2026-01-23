@@ -15,6 +15,7 @@ func _on_body_entered(body: Node) -> void:
 		$CollisionShape3D.disabled = true
 		body.call_deferred("queue_free") # cancella il bullet
 		killed.emit(1)
+		$AudioStreamPlayer3D.play()
 	pass
 
 

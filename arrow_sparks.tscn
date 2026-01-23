@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5bjwggoxwjxb"]
+
+[ext_resource type="Texture2D" uid="uid://b4car73fyq4ys" path="res://circle_05.png" id="1_cb0rc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7lyg"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_cb0rc")
+albedo_texture_msdf = true
+
+[sub_resource type="Curve" id="Curve_cb0rc"]
+_data = [Vector2(0, 0), 0.0, 3.134832, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xghtm"]
+curve = SubResource("Curve_cb0rc")
+
+[sub_resource type="Curve" id="Curve_xghtm"]
+_data = [Vector2(0, 0), 0.0, 3.1933775, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1abt7"]
+curve = SubResource("Curve_xghtm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s7lyg"]
+particle_flag_align_y = true
+direction = Vector3(0, 0, -1)
+spread = 0.0
+initial_velocity_min = 0.29999998
+initial_velocity_max = 1.1999999
+radial_velocity_min = 0.19997764
+radial_velocity_max = 0.99997765
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.79999995
+color = Color(0.34117648, 0.72156864, 0.16470589, 1)
+alpha_curve = SubResource("CurveTexture_xghtm")
+emission_curve = SubResource("CurveTexture_1abt7")
+hue_variation_min = -0.54
+hue_variation_max = 0.46999997
+
+[sub_resource type="QuadMesh" id="QuadMesh_cb0rc"]
+size = Vector2(0.1, 0.3)
+
+[node name="ArrowSparks" type="GPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_s7lyg")
+lifetime = 0.5
+explosiveness = 0.3
+process_material = SubResource("ParticleProcessMaterial_s7lyg")
+draw_pass_1 = SubResource("QuadMesh_cb0rc")
